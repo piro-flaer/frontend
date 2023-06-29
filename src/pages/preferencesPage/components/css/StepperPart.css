@@ -1,0 +1,4 @@
+.MuiStepConnector-horizontal.Mui-active>span,
+.MuiStepConnector-horizontal.Mui-completed>span {
+    border-color: black
+}

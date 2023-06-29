@@ -1,0 +1,16 @@
+.MuiButton-root.MuiButtonBase-root {
+    color: white;
+}
+
+.MuiButton-outlined>.css-8je8zh-MuiTouchRipple-root {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.MuiButton-root.MuiButton-outlined:hover {
+    background-color: rgba(22, 26, 31, 0.432);
+    border: 1px solid lightslategray;
+}
+
+.MuiButton-root.MuiButton-text:hover {
+    background-color: rgba(22, 26, 31, 0.432);
+}

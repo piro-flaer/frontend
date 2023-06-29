@@ -1,0 +1,83 @@
+@media screen and (max-width:767px) {
+    .trekHolder {
+        transform: rotateZ(-90deg);
+        transform-origin: center;
+        width: 100%;
+    }
+
+    .Small {
+        height: 70%;
+    }
+
+    .Medium {
+        height: 90%;
+    }
+
+    .Large {
+        height: 110%;
+    }
+
+    .midLayer {
+        transform: rotateY(-180deg) rotateZ(-90deg);
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .Small {
+        width: 30%;
+    }
+
+    .Medium {
+        width: 40%;
+    }
+
+    .Large {
+        width: 50%;
+    }
+
+    .trekHolder p {
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width:1024px) and (max-width:1339px) {
+    .Small {
+        width: 40%;
+    }
+
+    .Medium {
+        width: 45%;
+    }
+
+    .Large {
+        width: 50%;
+    }
+
+    .trekHolder p {
+        font-size: 30px;
+    }
+
+    .trekHolder:hover {
+        scale: 1;
+    }
+
+    .trekHolder:hover img,
+    .trekHolder:hover p {
+        scale: 1.25;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .trekHolder p {
+        font-size: 30px;
+    }
+
+    .trekHolder:hover {
+        scale: 1;
+    }
+
+    .trekHolder:hover img,
+    .trekHolder:hover p {
+        scale: 1.25;
+    }
+}

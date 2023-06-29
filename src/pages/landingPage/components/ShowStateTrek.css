@@ -1,0 +1,38 @@
+.statePart {
+    transform: none;
+    height: 100%;
+    width: 100%;
+}
+
+.stateTrekArrayHolder {
+    height: 125px;
+    width: 250px;
+    margin: auto;
+}
+
+@media screen and (min-width:768px) {
+    .stateTrekArrayHolder {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        width: 750px;
+        height: 250px;
+    }
+}
+
+@media screen and (min-width:1023px) {
+    .stateButtonDivHolder {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .stateButtonHolder {
+        width: 50%;
+    }
+
+    .stateTrekArrayHolder {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        width: 1000px;
+        height: 400px;
+    }
+}

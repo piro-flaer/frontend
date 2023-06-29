@@ -1,0 +1,27 @@
+[
+    {
+        "question": "Which state are you thinking of:",
+        "options": [
+            "Uttarakhand",
+            "Himachal Pradesh",
+            "Maharashtra",
+            "Other:"
+        ]
+    },
+    {
+        "question": "Which season would you prefer:",
+        "options": [
+            "Summer",
+            "Monsoon",
+            "Winter"
+        ]
+    },
+    {
+        "question": "What level of difficulty are you seeking:",
+        "options": [
+            "Easy",
+            "Medium",
+            "Hard"
+        ]
+    }
+]

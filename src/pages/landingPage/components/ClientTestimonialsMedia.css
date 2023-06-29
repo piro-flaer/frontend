@@ -1,0 +1,47 @@
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .clientwords span {
+        height: auto;
+        width: 50%;
+        text-align: justify;
+        font-size: 15px;
+    }
+
+    .clientwords p {
+        font-size: 17.5px;
+        text-align: right;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .clientHolder {
+        height: 60vh;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 50% 50%;
+    }
+
+    .clientQuote:hover img {
+        scale: 1.25;
+        transform-origin: center;
+        transform: rotateZ(360deg);
+    }
+
+    .clientQuote:hover span {
+        height: auto;
+        width: 175px;
+        text-align: justify;
+        font-size: 15px;
+        scale: 1.25;
+        transform-origin: center;
+        transform: rotateZ(360deg);
+        margin-top: 25px;
+    }
+
+    .clientQuote:hover p {
+        scale: 1.25;
+        text-align: right;
+        transform: rotateZ(360deg);
+        transform-origin: center;
+        padding-right: 15%;
+    }
+}

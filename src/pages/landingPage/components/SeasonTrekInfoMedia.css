@@ -1,0 +1,11 @@
+@media screen and (max-width:767px) {
+    .introPageSeasonHolder {
+        transform: rotateZ(90deg);
+        height: 350px;
+    }
+
+    .introPageTrekHolder {
+        height: 115px;
+    }
+
+}

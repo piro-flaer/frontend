@@ -1,0 +1,67 @@
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .rotatingPartHolder {
+        margin: 5% 0%;
+    }
+
+    .rotatingPart {
+        font-size: 60px;
+    }
+
+    .rotatingPartHolder:nth-child(1n),
+    .details,
+    .button {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width:1024px) and (max-width:1440px) {
+    .rotatingPartHolder {
+        margin: 5% 0%;
+    }
+
+    .buttonHolder {
+        margin: 2.5% 20%;
+    }
+
+    .button {
+        padding: 2.5%;
+    }
+}
+
+@media screen and (min-width:1440px) and (max-width:2560px) {
+    .rotatingPartHolder {
+        margin: 0.5% 0%;
+    }
+
+    .buttonHolder {
+        margin: 2.5% 20%;
+    }
+
+    .button {
+        padding: 2.5%;
+    }
+}
+
+@media screen and (min-width:2560px) {
+    .rotatingPartHolder {
+        margin: 2.5% 0%;
+    }
+
+    .buttonHolder {
+        margin: 2.5% 20%;
+    }
+
+    .button {
+        padding: 2.5%;
+    }
+
+    .rotatingPart {
+        font-size: 60px;
+    }
+
+    .rotatingPartHolder:nth-child(1n),
+    .details,
+    .button {
+        font-size: 30px;
+    }
+}

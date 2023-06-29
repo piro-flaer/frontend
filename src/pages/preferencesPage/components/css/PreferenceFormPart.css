@@ -1,0 +1,9 @@
+.preferenceFormHolder {
+    background-color: rgba(26, 32, 39, 0.4);
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow-x: hidden;
+}

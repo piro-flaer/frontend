@@ -1,0 +1,18 @@
+.showFavIcon {
+  animation: scaleIcon 1s ease;
+}
+
+@keyframes scaleIcon {
+  0% {
+    scale: 0;
+  }
+  25% {
+    scale: 1.25;
+  }
+  50% {
+    scale: 0.75;
+  }
+  100% {
+    scale: 1;
+  }
+}

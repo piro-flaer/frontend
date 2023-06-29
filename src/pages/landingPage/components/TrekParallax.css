@@ -1,0 +1,49 @@
+.trekHolder {
+  height: 100%;
+  width: 100%;
+  border: 2.5px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  scale: 0.75;
+  box-shadow: 1px 1px 15px black;
+  cursor: pointer;
+}
+
+.Small {
+  width: 40%;
+}
+
+.Medium {
+  width: 60%;
+}
+
+.Large {
+  width: 80%;
+}
+
+.midLayer {
+  transform: rotateY(180deg);
+}
+
+.trekHolder img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  transition: all 0.5s ease-in-out;
+}
+
+.trekHolder p {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 1px 1px 10px black;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}

@@ -1,0 +1,30 @@
+#signupProfile {
+    opacity: 1;
+}
+
+#signupProfile+p {
+    color: black;
+    text-align: center;
+    margin: 0;
+    z-index: -1;
+    position: relative;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+#signupProfile:hover+p {
+    z-index: 1;
+}
+
+#signupProfile:hover {
+    opacity: 0.5;
+}
+
+.signupProfilePhoto {
+    border-radius: 50%;
+}
+
+.signupPage {
+    height: auto;
+    margin-top: 100px;
+}

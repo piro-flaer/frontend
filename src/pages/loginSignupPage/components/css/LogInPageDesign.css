@@ -1,0 +1,118 @@
+.formHolderBG {
+    height: 60%;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.178);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logInForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formHolderBG h2 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.formHolderBG p,
+.formHolderBG button {
+    font-family: 'Tajawal', sans-serif;
+}
+
+.profilePhoto {
+    width: 60%;
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+}
+
+.profilePhoto img {
+    max-height: 150px;
+    max-width: 150px;
+    width: 100%;
+    object-fit: fill;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.formLevels>div>h2 {
+    cursor: default;
+}
+
+.inputHolder {
+    height: 50px;
+    width: 100%;
+    max-width: 150px;
+    cursor: default;
+}
+
+.formHolderBG input {
+    width: 100%;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 17.5px;
+    font-weight: bold;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.palceholderBG {
+    margin-top: 5px;
+    width: 105%;
+    height: 0px;
+    border-top: 2px solid black;
+    position: relative;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%) rotateX(180deg);
+    transition: all 0.5s ease-in-out;
+    transform-origin: top;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.formHolderBG input:focus+.palceholderBG {
+    height: 35px;
+    background-color: rgba(185, 185, 185, 0.75);
+}
+
+.logInPageButton {
+    border-radius: 3px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #150f03;
+    text-align: center;
+    border: none;
+}
+
+.logInPageButton:hover {
+    background-color: rgba(255, 255, 255, 0.47);
+}
+
+.belowForm {
+    margin-top: 25px;
+    border-top: 0.25px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

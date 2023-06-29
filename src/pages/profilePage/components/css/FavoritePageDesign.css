@@ -1,0 +1,27 @@
+.favoriteSection {
+    justify-content: start;
+    flex-direction: column;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.favoriteHeader {
+    font-size: 35px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.favoriteBody {
+    padding: 20px 0px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    align-items: center;
+    justify-content: center;
+}
+
+.favoriteSecItem {
+    background-color: white;
+}

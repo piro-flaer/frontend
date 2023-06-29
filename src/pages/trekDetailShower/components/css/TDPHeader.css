@@ -1,0 +1,15 @@
+.trekDetailPage {
+    height: 100%;
+    width: 100%;
+}
+
+.tdpHeader {
+    height: 50%;
+    width: 100%;
+}
+
+.tdpHeader img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}

@@ -1,0 +1,23 @@
+.stateButtonHolder {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2.5%;
+}
+
+.stateButton {
+    font-size: 14px;
+    background: transparent;
+    outline: none;
+    border-radius: 10px;
+    padding: 1.5%;
+}
+
+.clicked {
+    color: orangered;
+    border-color: orangered;
+}
+
+.stateButton:hover {
+    color: orangered;
+    border-color: orangered;
+}

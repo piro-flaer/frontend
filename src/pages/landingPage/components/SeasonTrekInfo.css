@@ -1,0 +1,35 @@
+.introPageSeasonHolder {
+  display: block;
+  height: 450px;
+  width: 100%;
+  text-align: center;
+  overflow: auto;
+}
+
+.introPageTrekHolder {
+  margin: auto;
+  inset: 0;
+  height: 33%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.introPageTrekSeason {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.introPageSeasonHolder > div > div::-webkit-scrollbar,
+.introPageSeasonHolder > div::-webkit-scrollbar,
+.introPageSeasonHolder-webkit-scrollbar {
+  display: none;
+}
+
+.introPageSeasonHolder > div > div,
+.introPageSeasonHolder > div,
+.introPageSeasonHolder {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

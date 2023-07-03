@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Treks from "./Treks.json";
-import "./StateTrekInfo.css";
+import "../css/StateTrekInfo.css";
 import ShowStateTrek from "./ShowStateTrek";
 
-const StateTrekInfo = () => {
+const StateTrekInfo = ({ Treks }) => {
   const numberOfItems = window.innerWidth < 768 ? 3 : 6;
 
   const stateList = [
@@ -69,7 +68,9 @@ const StateTrekInfo = () => {
           })}
         </div>
       </div>
-      <ShowStateTrek stateTrekArray={stateArray} />
+      <ShowStateTrek
+        stateTrekArray={stateArray.sort(() => Math.random() - 0.5)}
+      />
     </>
   );
 };

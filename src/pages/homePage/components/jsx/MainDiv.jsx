@@ -1,11 +1,10 @@
 import React from "react";
 import "../css/MainDiv.css";
-import Treks from "../../../landingPage/components/Treks.json";
 import Button from "@mui/material/Button";
 import InfoIcon from "@mui/icons-material/Info";
 import { Link } from "react-router-dom";
 
-const MainDiv = () => {
+const MainDiv = ({ Treks }) => {
   const trekList = Treks.filter((trek) => trek.season === "Monsoon");
   const trek = trekList[Math.floor(Math.random() * trekList.length)];
 

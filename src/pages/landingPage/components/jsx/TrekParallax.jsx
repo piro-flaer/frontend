@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./TrekParallax.css";
-import "./TrekParallaxMedia.css";
+import "../css/TrekParallax.css";
+import "../css/TrekParallaxMedia.css";
 import DialogBox from "./DialogBox";
 
 const TrekParallax = ({ mid, treks, dimension }) => {

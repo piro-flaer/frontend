@@ -2,11 +2,10 @@ import React from "react";
 import "../css/TDPHeader.css";
 
 const TDPHeader = ({ imgSrc }) => {
-  console.log("02", imgSrc);
   return (
     <>
       <div className="tdpHeader">
-        <img src={"/" + imgSrc} />
+        <img src={imgSrc} />
       </div>
     </>
   );

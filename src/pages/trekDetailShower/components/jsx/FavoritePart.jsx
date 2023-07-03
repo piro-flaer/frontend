@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "../css/FavoritePart.css";
+import AddFavoriteAPI from "../../../../apis/AddFavoriteAPI";
+import RemoveFavoriteAPI from "../../../../apis/RemoveFavoriteAPI";
 
-const FavoritePart = () => {
-  const [favoriteSelected, setFavoriteSelected] = useState(false);
+const FavoritePart = ({ trekName, isFavorite }) => {
+  const [favoriteSelected, setFavoriteSelected] = useState(isFavorite);
+  useEffect(() => {
+    setFavoriteSelected(isFavorite);
+  }, [isFavorite]);
+  const userName = localStorage.getItem("userName");
 
   const [toolTipString, setToolTipString] = useState(
     favoriteSelected ? "Remove From Favorites" : "Add To Favorites"
   );
 
-  const addFunc = () => {
+  const addFunc = async () => {
+    const apiResponse = await AddFavoriteAPI({ userName, trekName });
+    if (apiResponse === 400) {
+      alert("Something Went Wrong! Please Try Again");
+      return;
+    }
     setFavoriteSelected(!favoriteSelected);
     setToolTipString("Remove From Favorites");
   };
 
-  const removeFunc = () => {
+  const removeFunc = async () => {
+    const apiResponse = await RemoveFavoriteAPI({ userName, trekName });
+    if (apiResponse === 400) {
+      alert("Something Went Wrong! Please Try Again");
+      return;
+    }
     setFavoriteSelected(!favoriteSelected);
     setToolTipString("Add To Favorites");
   };

@@ -1,13 +1,13 @@
 import React from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import "./IntroSection.css";
-import "./IntroSectionMedia.css";
+import "../css/IntroSection.css";
+import "../css/IntroSectionMedia.css";
 import DetailPart from "./DetailPart";
 import SeasonTrek from "./SeasonTrek";
 import StateTrek from "./StateTrek";
 import Clients from "./Clients";
 
-const IntroSection = () => {
+const IntroSection = ({ Treks }) => {
   return (
     <div className="introSection">
       <Parallax
@@ -49,10 +49,10 @@ const IntroSection = () => {
           speed={0.25}
           style={{ backgroundColor: "#A1D2CE" }}
         >
-          <SeasonTrek />
+          <SeasonTrek Treks={Treks} />
         </ParallaxLayer>
         <ParallaxLayer offset={4} speed={0.75}>
-          <StateTrek />
+          <StateTrek Treks={Treks} />
         </ParallaxLayer>
         <ParallaxLayer offset={5} speed={0.5}>
           <Clients />

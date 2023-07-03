@@ -40,7 +40,7 @@ const AlertBox = ({ open, setOpen, message }) => {
             fontSize: "25px",
           }}
         >
-          <p>Please Fill {message}!</p>
+          <p>{message}</p>
         </DialogContent>
       </Dialog>
     </>

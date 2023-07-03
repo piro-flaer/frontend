@@ -35,15 +35,26 @@ const LogInPageDesign = () => {
     const userName = document.querySelectorAll("input")[0].value;
     if (!userName) {
       setOpen(true);
-      setMessage("UserName");
+      setMessage("Please Enter UserName!");
     } else {
       const password = document.querySelectorAll("input")[1].value;
       if (!password) {
         setOpen(true);
-        setMessage("Password");
+        setMessage("Please Enter Password!");
       } else {
         const apiResponse = await LogInAPI({ userName, password });
-        console.log(apiResponse);
+        if (apiResponse.statusCode === 201) {
+          console.log(apiResponse);
+          localStorage.setItem("accessToken", apiResponse.result);
+          localStorage.setItem("userName", userName);
+          window.location.replace(process.env.REACT_APP_BACKEND_URL + "home");
+        } else if (apiResponse.message === "User Not Found!") {
+          setOpen(true);
+          setMessage(apiResponse.message);
+        } else if (apiResponse.message === "Password Doesn't Match!") {
+          setOpen(true);
+          setMessage(apiResponse.message);
+        }
       }
     }
   };

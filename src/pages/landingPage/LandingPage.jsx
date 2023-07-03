@@ -1,12 +1,20 @@
-import React from 'react'
-import IntroSection from './components/IntroSection'
+import React, { useState, useEffect } from "react";
+import IntroSection from "./components/jsx/IntroSection";
+import TrekListAPI from "../../apis/TrekListAPI";
 
 const LandingPage = () => {
-  return (
-    <>
-      <IntroSection />
-    </>
-  )
-}
+  const [Treks, setTreks] = useState();
 
-export default LandingPage
+  const generateArray = async () => {
+    const response = await TrekListAPI({});
+    setTreks(response);
+  };
+
+  useEffect(() => {
+    generateArray();
+  }, []);
+
+  return <>{Treks && <IntroSection Treks={Treks} />}</>;
+};
+
+export default LandingPage;

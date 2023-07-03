@@ -1,4 +1,6 @@
-import Treks from "../../../landingPage/components/Treks.json";
+import TrekListAPI from "../../../../apis/TrekListAPI";
+
+const Treks = await TrekListAPI({});
 
 const TrekCategoryGenerator = () => {
   const stateList = [...new Set(Treks.map((trek) => trek.state))];

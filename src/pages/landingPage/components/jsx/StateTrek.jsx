@@ -1,7 +1,7 @@
 import React from "react";
 import StateTrekInfo from "./StateTrekInfo";
 
-const StateTrek = () => {
+const StateTrek = ({ Treks }) => {
   return (
     <>
       <div style={{ color: "black" }}>
@@ -17,7 +17,7 @@ const StateTrek = () => {
         <div className="rotatingPartHolder">
           <div>to explore state treasures</div>
         </div>
-        <StateTrekInfo />
+        <StateTrekInfo Treks={Treks} />
       </div>
     </>
   );

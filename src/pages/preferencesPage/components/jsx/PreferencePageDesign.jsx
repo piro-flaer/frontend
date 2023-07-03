@@ -1,25 +1,40 @@
-import React, { useState } from 'react';
-import StepperPart from "./StepperPart"
-import PreferenceFormPart from "./PreferenceFormPart"
-import ButtonDesign from "./ButtonDesign"
+import React, { useState } from "react";
+import StepperPart from "./StepperPart";
+import PreferenceFormPart from "./PreferenceFormPart";
+import ButtonDesign from "./ButtonDesign";
 
+const PreferencePageDesign = ({ userName }) => {
+  const [direction, setDirection] = useState();
+  const [divIndex, setDivIndex] = useState(0);
 
-const PreferencePageDesign = () => {
+  const [prefState, setPrefState] = useState("NA");
+  const [prefSeason, setPrefSeason] = useState("NA");
+  const [prefDifficulty, setPrefDifficulty] = useState("NA");
 
-    const [direction, setDirection] = useState()
-    const [divIndex, setDivIndex] = useState(0)
+  return (
+    <div className="formHolderBG">
+      <StepperPart divIndexValue={divIndex} />
+      <PreferenceFormPart
+        divIndexValue={divIndex}
+        directionValue={direction}
+        prefStateValue={prefState}
+        prefSeasonValue={prefSeason}
+        prefDifficultyValue={prefDifficulty}
+      />
+      <ButtonDesign
+        divIndexValue={divIndex}
+        setDivIndexValue={setDivIndex}
+        setDirectionValue={setDirection}
+        setPrefStateValue={setPrefState}
+        setPrefSeasonValue={setPrefSeason}
+        setPrefDifficultyValue={setPrefDifficulty}
+        prefStateValue={prefState}
+        prefSeasonValue={prefSeason}
+        prefDifficultyValue={prefDifficulty}
+        userName={userName}
+      />
+    </div>
+  );
+};
 
-    const [prefState, setPrefState] = useState("NA")
-    const [prefSeason, setPrefSeason] = useState("NA")
-    const [prefDifficulty, setPrefDifficulty] = useState("NA")
-
-    return (
-        <div className='formHolderBG'>
-            <StepperPart divIndexValue={divIndex} />
-            <PreferenceFormPart divIndexValue={divIndex} directionValue={direction} prefStateValue={prefState} prefSeasonValue={prefSeason} prefDifficultyValue={prefDifficulty} />
-            <ButtonDesign divIndexValue={divIndex} setDivIndexValue={setDivIndex} setDirectionValue={setDirection} setPrefStateValue={setPrefState} setPrefSeasonValue={setPrefSeason} setPrefDifficultyValue={setPrefDifficulty} />
-        </div>
-    )
-}
-
-export default PreferencePageDesign
+export default PreferencePageDesign;

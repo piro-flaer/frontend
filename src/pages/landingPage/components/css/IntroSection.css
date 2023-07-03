@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700&display=swap");
+
+.introParallaxLayer {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+}
+
+#img01 {
+  background-image: url("../../../../../public/images/01.png");
+}
+
+#img02 {
+  background-image: url("../../../../../public/images/02.png");
+}
+
+#img03 {
+  background-image: url("../../../../../public/images/03.png");
+}
+
+#img04 {
+  background-image: url("../../../../../public/images/04.png");
+}
+
+#img05 {
+  background-image: url("../../../../../public/images/05.png");
+}
+
+#img06 {
+  background-image: url("../../../../../public/images/06.png");
+}
+
+#img07 {
+  background-image: url("../../../../../public/images/07.png");
+}
+
+#title {
+  text-align: center;
+  margin-top: 25%;
+  font-family: "Alegreya SC", serif;
+  font-size: 50px;
+  text-shadow: 1px 1px 10px white;
+}

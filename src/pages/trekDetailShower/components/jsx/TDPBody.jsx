@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import FavoritePart from "./FavoritePart";
 import "../css/TDPBody.css";
 import TerrainIcon from "@mui/icons-material/Terrain";
 import MapIcon from "@mui/icons-material/Map";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import GetFavTreksAPI from "../../../../apis/GetFavTreksAPI";
 
 const TDPBody = ({
   trekName,
@@ -12,12 +13,23 @@ const TDPBody = ({
   trekDifficulty,
   trekDescription,
 }) => {
+  const userName = localStorage.getItem("userName");
+  const [favoriteSelected, setFavoriteSelected] = useState(false);
+
+  const generateResponse = async () => {
+    const apiResponse = await GetFavTreksAPI({ userName });
+    apiResponse.forEach((trek) => {
+      trek.name === trekName && setFavoriteSelected(true);
+    });
+  };
+  generateResponse();
+
   return (
     <>
       <div className="formHolderBG tdpBody">
         <div className="tdpTrekName">
           {trekName}
-          <FavoritePart />
+          <FavoritePart trekName={trekName} isFavorite={favoriteSelected} />
         </div>
         <div className="tdpDetailsHolder">
           <div className="tdpDetail">

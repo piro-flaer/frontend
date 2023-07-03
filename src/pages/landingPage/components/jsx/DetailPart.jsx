@@ -1,7 +1,6 @@
 import React from "react";
-import "./DetailPart.css";
-import "./DetailPartMedia.css";
-
+import "../css/DetailPart.css";
+import "../css/DetailPartMedia.css";
 import RotatingPart from "./RotatingPart";
 import { Link } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 const AddFavoriteAPI = async ({ userName, trekName }) => {
-  const url = new URL(process.env.BACKEND_URL + "favorite/add");
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "favorite/add");
 
   const response = await fetch(url, {
     method: "post",

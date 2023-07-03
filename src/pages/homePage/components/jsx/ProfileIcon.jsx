@@ -9,13 +9,17 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
+import GetUserDetailsAPI from "../../../../apis/GetUserDetailsAPI";
 
 const ProfileIcon = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [ProfileImg, setProfileImg] = useState(null);
+  const userName = localStorage.getItem("userName");
+
   const open = Boolean(anchorEl);
 
-  const handleClick = async (event) => {
-    await setAnchorEl(event.currentTarget);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
     !document.querySelector(".headerClass").classList.contains("day") &&
       (() => {
         document
@@ -38,6 +42,13 @@ const ProfileIcon = () => {
     setAnchorEl(null);
   };
 
+  const GenerateProfileImg = async () => {
+    const imgSrc = await GetUserDetailsAPI({ userName });
+    setProfileImg(imgSrc.profile);
+  };
+
+  GenerateProfileImg();
+
   return (
     <>
       <Tooltip title="Account Settings">
@@ -45,9 +56,8 @@ const ProfileIcon = () => {
           style={{ cursor: "pointer" }}
           onClick={handleClick}
           sx={{ width: 32, height: 32 }}
-        >
-          M
-        </Avatar>
+          src={ProfileImg}
+        />
       </Tooltip>
       <Menu
         anchorEl={anchorEl}
@@ -73,6 +83,7 @@ const ProfileIcon = () => {
                   width: 25,
                   height: 25,
                 }}
+                src={ProfileImg}
               />
             </ListItemIcon>
             Profile

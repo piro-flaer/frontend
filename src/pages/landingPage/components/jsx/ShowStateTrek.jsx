@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DialogBox from "./DialogBox";
-import "./ShowStateTrek.css";
+import "../css/ShowStateTrek.css";
 
 const ShowStateTrek = ({ stateTrekArray }) => {
   const [open, setOpen] = useState(false);

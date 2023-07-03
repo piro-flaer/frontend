@@ -6,9 +6,10 @@ import Avatar from "react-avatar-edit";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import SignUpAPI from "../../../../apis/SignUpAPI";
 import AlertBox from "./AlertBox";
+import FormValidation from "../js/FormValidation";
 
 const SignUpPageDesign = () => {
   const [dialogBox, setDialogBox] = useState(false);
@@ -30,44 +31,117 @@ const SignUpPageDesign = () => {
     setDialogBox(false);
   };
 
-  const handleSignUpClick = () => {
-    const profileImg = document.querySelectorAll("input")[0].value;
-    if (!profileImg) {
+  const handleSignUpClick = async () => {
+    const firstName = document.querySelectorAll("input")[0].value;
+    if (!firstName) {
       setOpen(true);
-      setMessage("Profile Pic");
+      setMessage("Please Enter First Name");
+      return;
     } else {
-      const firstName = document.querySelectorAll("input")[1].value;
-      if (!firstName) {
+      const formValResult = FormValidation({
+        param: "name",
+        paramValue: firstName,
+      });
+      if (formValResult.result) {
         setOpen(true);
-        setMessage("First Name");
-      } else {
-        const lastName = document.querySelectorAll("input")[2].value;
-        if (!lastName) {
-          setOpen(true);
-          setMessage("Last Name");
-        } else {
-          const userName = document.querySelectorAll("input")[3].value;
-          if (!userName) {
-            setOpen(true);
-            setMessage("User Name");
-          } else {
-            const email = document.querySelectorAll("input")[4].value;
-            if (!userName) {
-              setOpen(true);
-              setMessage("User Name");
-            } else {
-              // const password = document.querySelectorAll("input")[5].value;
-              // if (!password) {
-              // setOpen(true);
-              // setMessage("Password");
-              // } else {
-              // console.log(firstName, lastName, userName, email, password);
-              console.log(firstName, lastName, userName, email);
-              // }
-            }
-          }
-        }
+        setMessage(formValResult.message);
+        return;
       }
+    }
+
+    const lastName = document.querySelectorAll("input")[1].value;
+    if (!lastName) {
+      setOpen(true);
+      setMessage("Please Enter Last Name");
+      return;
+    } else {
+      const formValResult = FormValidation({
+        param: "name",
+        paramValue: lastName,
+      });
+      if (formValResult.result) {
+        setOpen(true);
+        setMessage(formValResult.message);
+        return;
+      }
+    }
+
+    const email = document.querySelectorAll("input")[2].value;
+    if (!email) {
+      setOpen(true);
+      setMessage("Please Enter Email");
+      return;
+    } else {
+      const formValResult = FormValidation({
+        param: "email",
+        paramValue: email,
+      });
+      if (formValResult.result) {
+        setOpen(true);
+        setMessage(formValResult.message);
+        return;
+      }
+    }
+
+    const userName = document.querySelectorAll("input")[3].value;
+    if (!userName) {
+      setOpen(true);
+      setMessage("Please Enter User Name");
+      return;
+    } else {
+      const formValResult = FormValidation({
+        param: "userName",
+        paramValue: userName,
+      });
+      if (formValResult.result) {
+        setOpen(true);
+        setMessage(formValResult.message);
+        return;
+      }
+    }
+
+    const password = document.querySelectorAll("input")[4].value;
+    if (!password) {
+      setOpen(true);
+      setMessage("Please Enter Password");
+      return;
+    } else {
+      const formValResult = FormValidation({
+        param: "password",
+        paramValue: password,
+      });
+      if (formValResult.result) {
+        setOpen(true);
+        setMessage(formValResult.message);
+        return;
+      }
+    }
+
+    if (!storeImg) {
+      setOpen(true);
+      setMessage("Please Choose A Profile Pic");
+      return;
+    }
+
+    const apiResponse = await SignUpAPI({
+      firstName,
+      lastName,
+      email,
+      userName,
+      password,
+      profile: storeImg,
+    });
+
+    if (apiResponse.statusCode === 409) {
+      setOpen(true);
+      setMessage(apiResponse.message);
+      return;
+    } else if (apiResponse.statusCode === 400) {
+      setOpen(true);
+      setMessage("Something Went Wrong. Please Try Again.");
+      return;
+    } else {
+      <Navigate to="/preferences" state={{ userName: userName }} />;
     }
   };
 

@@ -1,6 +1,8 @@
 import { seasonLines, stateLines, difficultyLines } from "./Lines";
-import TrekCategoryGenerator from "../js/TrekCategoryGenerator";
-import Treks from "../../../landingPage/components/Treks.json";
+import TrekCategoryGenerator from "./TrekCategoryGenerator";
+import TrekListAPI from "../../../../apis/TrekListAPI";
+
+const Treks = await TrekListAPI({});
 
 const GenerateStateLine = (stateName) => {
   const index = Math.floor(Math.random() * stateLines.length);

@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GeneralSection from "./GeneralSection";
-import Treks from "../../../landingPage/components/Treks.json";
+import RecommendAPI from "../../../../apis/RecommendAPI";
 
 const RecommendedSection = () => {
-  const Trek = Treks.filter((trek) => {
-    return (
-      trek.state === "Uttarakhand" ||
-      trek.season === "Summer" ||
-      trek.difficulty === "Easy"
-    );
-  });
+  const [Trek, setTrek] = useState();
+  const userName = localStorage.getItem("userName");
+
+  const generateArray = async () => {
+    const recommendedArray = await RecommendAPI({ userName });
+    setTrek(recommendedArray);
+  };
+
+  useEffect(() => {
+    generateArray();
+  }, []);
+
   const sectionHeadValue = "Recommended For You";
-  const sectionArrayValue = Trek.sort(() => Math.random() - 0.5).slice(0, 10);
+  const sectionArrayValue = Trek?.sort(() => Math.random() - 0.5).slice(0, 10);
 
   return (
     <>
-      <GeneralSection
-        sectionHead={sectionHeadValue}
-        sectionArray={sectionArrayValue}
-        recommendedTreks={Trek}
-      />
+      {Trek && (
+        <GeneralSection
+          sectionHead={sectionHeadValue}
+          sectionArray={sectionArrayValue}
+          recommendedTreks={Trek}
+        />
+      )}
     </>
   );
 };

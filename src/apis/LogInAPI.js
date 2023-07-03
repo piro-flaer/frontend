@@ -1,5 +1,5 @@
 const LogInAPI = async ({ userName, password }) => {
-  const url = new URL("http://localhost:3500/auth");
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "auth");
 
   const response = await fetch(url, {
     method: "post",
@@ -11,9 +11,9 @@ const LogInAPI = async ({ userName, password }) => {
   });
 
   const result = await response.json();
-  console.log(result);
+  const statusCode = await response.status;
 
-  return result;
+  return { ...result, statusCode };
 };
 
 export default LogInAPI;

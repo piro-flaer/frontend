@@ -1,13 +1,18 @@
 import React from "react";
-import Treks from "./Treks.json";
 import SeasonTrekInfoLayer from "./SeasonTrekInfoLayer";
-import "./SeasonTrekInfo.css";
-import "./SeasonTrekInfoMedia.css";
+import "../css/SeasonTrekInfo.css";
+import "../css/SeasonTrekInfoMedia.css";
 
-const SeasonTrekInfo = () => {
-  const SummerTreks = Treks.filter((trek) => trek.season === "Summer");
-  const MonsoonTreks = Treks.filter((trek) => trek.season === "Monsoon");
-  const WinterTreks = Treks.filter((trek) => trek.season === "Winter");
+const SeasonTrekInfo = ({ Treks }) => {
+  const SummerTreks = Treks.filter((trek) => trek.season === "Summer").sort(
+    () => Math.random() - 0.5
+  );
+  const MonsoonTreks = Treks.filter((trek) => trek.season === "Monsoon").sort(
+    () => Math.random() - 0.5
+  );
+  const WinterTreks = Treks.filter((trek) => trek.season === "Winter").sort(
+    () => Math.random() - 0.5
+  );
   const traversalArray = [SummerTreks, MonsoonTreks, WinterTreks];
 
   return (

@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from "react";
-
 const TrekListAPI = async ({ stateParam, seasonParam, difficultyParam }) => {
-  const [data, setData] = useState();
-
-  const url = new URL("http://localhost:3500/trekList");
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "trekList");
 
   if (stateParam) {
     url.searchParams.append("state", stateParam);
@@ -15,18 +11,9 @@ const TrekListAPI = async ({ stateParam, seasonParam, difficultyParam }) => {
     url.searchParams.append("difficulty", difficultyParam);
   }
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((result) => {
-        setData(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const response = await (await fetch(url)).json();
 
-  return data;
+  return response;
 };
 
 export default TrekListAPI;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "../css/IntroSection.css";
 import "../css/IntroSectionMedia.css";
@@ -6,8 +6,20 @@ import DetailPart from "./DetailPart";
 import SeasonTrek from "./SeasonTrek";
 import StateTrek from "./StateTrek";
 import Clients from "./Clients";
+import TrekListAPI from "../../apis/TrekListAPI";
 
-const IntroSection = ({ Treks }) => {
+const IntroSection = () => {
+  const [Treks, setTreks] = useState();
+
+  const generateArray = async () => {
+    const response = await TrekListAPI({});
+    setTreks(response);
+  };
+
+  useEffect(() => {
+    generateArray();
+  }, []);
+
   return (
     <div className="introSection">
       <Parallax
@@ -49,10 +61,10 @@ const IntroSection = ({ Treks }) => {
           speed={0.25}
           style={{ backgroundColor: "#A1D2CE" }}
         >
-          <SeasonTrek Treks={Treks} />
+          {Treks && <SeasonTrek Treks={Treks} />}
         </ParallaxLayer>
         <ParallaxLayer offset={4} speed={0.75}>
-          <StateTrek Treks={Treks} />
+          {Treks && <StateTrek Treks={Treks} />}
         </ParallaxLayer>
         <ParallaxLayer offset={5} speed={0.5}>
           <Clients />

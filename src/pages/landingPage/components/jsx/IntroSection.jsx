@@ -6,7 +6,7 @@ import DetailPart from "./DetailPart";
 import SeasonTrek from "./SeasonTrek";
 import StateTrek from "./StateTrek";
 import Clients from "./Clients";
-import TrekListAPI from "../../apis/TrekListAPI";
+import TrekListAPI from "../../../../apis/TrekListAPI";
 
 const IntroSection = () => {
   const [Treks, setTreks] = useState();

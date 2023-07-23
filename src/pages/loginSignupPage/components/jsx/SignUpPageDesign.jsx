@@ -17,6 +17,7 @@ const SignUpPageDesign = () => {
   const [storeImg, setStoreImg] = useState(null);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [created, setCreated] = useState(false);
 
   const avatarOnCrop = (view) => {
     setProfileImg(view);
@@ -134,19 +135,21 @@ const SignUpPageDesign = () => {
 
     if (apiResponse.statusCode === 409) {
       setOpen(true);
-      setMessage(apiResponse.message);
+      setMessage(apiResponse.message.message);
       return;
     } else if (apiResponse.statusCode === 400) {
       setOpen(true);
       setMessage("Something Went Wrong. Please Try Again.");
       return;
     } else {
-      <Navigate to="/preferences" state={{ userName: userName }} />;
+      localStorage.setItem("accessToken", apiResponse.message.accessToken);
+      setCreated(true);
     }
   };
 
   return (
     <>
+      {created && <Navigate to="/preferences" />}
       <div className="formHolderBG signupPage">
         <div
           className="profilePhoto"

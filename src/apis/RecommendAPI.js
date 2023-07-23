@@ -1,11 +1,17 @@
 import TrekListAPI from "./TrekListAPI";
 
 const RecommendAPI = async ({ userName }) => {
-  const url = new URL(
-    process.env.REACT_APP_BACKEND_URL + "preferences?userName=" + userName
-  );
+  const accessToken = localStorage.getItem("accessToken");
 
-  const response = await (await fetch(url)).json();
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "preferences");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const response = await (await fetch(url, options)).json();
 
   const list01 = await TrekListAPI({
     stateParam: response.state,

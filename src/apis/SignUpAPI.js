@@ -6,7 +6,7 @@ const SignUpAPI = async ({
   password,
   profile,
 }) => {
-  const url = new URL(process.env.REACT_APP_BACKEND_URL + "profile");
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "create");
 
   const response = await fetch(url, {
     method: "post",
@@ -19,6 +19,7 @@ const SignUpAPI = async ({
       password: password,
       profile: profile,
     }),
+    credentials: "include",
   });
 
   const message = await response.json();

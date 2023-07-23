@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../css/LogInPageDesign.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import LogInAPI from "../../../../apis/LogInAPI";
 import AlertBox from "./AlertBox";
 
 const LogInPageDesign = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [verified, setVerified] = useState(false);
   const toggleOpacity = (elementID) => {
     elementID === "profileNormal"
       ? (() => {
@@ -44,10 +45,8 @@ const LogInPageDesign = () => {
       } else {
         const apiResponse = await LogInAPI({ userName, password });
         if (apiResponse.statusCode === 201) {
-          console.log(apiResponse);
-          localStorage.setItem("accessToken", apiResponse.result);
-          localStorage.setItem("userName", userName);
-          window.location.replace(process.env.REACT_APP_BACKEND_URL + "home");
+          localStorage.setItem("accessToken", apiResponse.accessToken);
+          setVerified(true);
         } else if (apiResponse.message === "User Not Found!") {
           setOpen(true);
           setMessage(apiResponse.message);
@@ -61,6 +60,7 @@ const LogInPageDesign = () => {
 
   return (
     <>
+      {verified && <Navigate to="/home" replace={true} />}
       <div className="formHolderBG">
         <div className="profilePhoto">
           <img id="profileNormal" src="images/profileNormal.png" />

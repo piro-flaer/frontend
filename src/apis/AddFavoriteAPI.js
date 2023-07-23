@@ -1,14 +1,19 @@
-const AddFavoriteAPI = async ({ userName, trekName }) => {
-  const url = new URL(process.env.REACT_APP_BACKEND_URL + "favorite/add");
+const AddFavoriteAPI = async ({ trekName }) => {
+  const accessToken = localStorage.getItem("accessToken");
 
-  const response = await fetch(url, {
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "favorite/add");
+  const options = {
     method: "post",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
     body: JSON.stringify({
-      userName: userName,
       favoriteItem: trekName,
     }),
-  });
+  };
+
+  const response = await fetch(url, options);
 
   const statusCode = await response.status;
 

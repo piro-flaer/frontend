@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FavoritePart from "./FavoritePart";
 import "../css/TDPBody.css";
 import TerrainIcon from "@mui/icons-material/Terrain";
@@ -22,7 +22,10 @@ const TDPBody = ({
       trek.name === trekName && setFavoriteSelected(true);
     });
   };
-  generateResponse();
+
+  useEffect(() => {
+    generateResponse();
+  }, []);
 
   return (
     <>

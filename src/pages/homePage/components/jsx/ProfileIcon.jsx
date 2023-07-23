@@ -8,13 +8,14 @@ import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import GetUserDetailsAPI from "../../../../apis/GetUserDetailsAPI";
+import LogOutAPI from "../../../../apis/LogOutAPI";
 
 const ProfileIcon = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [ProfileImg, setProfileImg] = useState(null);
-  const userName = localStorage.getItem("userName");
+  const [redirect, setRedirect] = useState(false);
 
   const open = Boolean(anchorEl);
 
@@ -43,7 +44,7 @@ const ProfileIcon = () => {
   };
 
   const GenerateProfileImg = async () => {
-    const imgSrc = await GetUserDetailsAPI({ userName });
+    const imgSrc = await GetUserDetailsAPI();
     setProfileImg(imgSrc.profile);
   };
 
@@ -51,6 +52,7 @@ const ProfileIcon = () => {
 
   return (
     <>
+      {redirect && <Navigate to="/" />}
       <Tooltip title="Account Settings">
         <Avatar
           style={{ cursor: "pointer" }}
@@ -120,7 +122,14 @@ const ProfileIcon = () => {
             My Preferences
           </Link>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            localStorage.removeItem("accessToken");
+            handleClose();
+            LogOutAPI();
+            setRedirect(true);
+          }}
+        >
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

@@ -3,7 +3,7 @@ import StepperPart from "./StepperPart";
 import PreferenceFormPart from "./PreferenceFormPart";
 import ButtonDesign from "./ButtonDesign";
 
-const PreferencePageDesign = ({ userName }) => {
+const PreferencePageDesign = () => {
   const [direction, setDirection] = useState();
   const [divIndex, setDivIndex] = useState(0);
 
@@ -31,7 +31,6 @@ const PreferencePageDesign = ({ userName }) => {
         prefStateValue={prefState}
         prefSeasonValue={prefSeason}
         prefDifficultyValue={prefDifficulty}
-        userName={userName}
       />
     </div>
   );

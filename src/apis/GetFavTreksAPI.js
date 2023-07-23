@@ -1,9 +1,15 @@
-const GetFavTreksAPI = async ({ userName }) => {
-  const url = new URL(
-    process.env.REACT_APP_BACKEND_URL + "favorite?userName=" + userName
-  );
+const GetFavTreksAPI = async () => {
+  const accessToken = localStorage.getItem("accessToken");
 
-  const response = await (await fetch(url)).json();
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "favorite");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const response = await (await fetch(url, options)).json();
 
   return response;
 };

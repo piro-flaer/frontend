@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import "../css/ButtonDesign.css";
 import SetPreferencesAPI from "../../../../apis/SetPreferencesAPI";
@@ -14,8 +14,8 @@ const ButtonDesign = ({
   prefStateValue,
   prefSeasonValue,
   prefDifficultyValue,
-  userName,
 }) => {
+  const [preferencesDone, setPreferencesDone] = useState(false);
   const backButtonClicked = () => {
     setDivIndexValue((index) => {
       return (index -= 1);
@@ -51,9 +51,7 @@ const ButtonDesign = ({
         ? document.querySelector(".selectedOptionSpan").innerHTML
         : "NA"
     );
-    console.log("finished");
     const apiResponse = SetPreferencesAPI({
-      userName: userName,
       state: prefStateValue,
       season: prefSeasonValue,
       difficulty: prefDifficultyValue,
@@ -63,12 +61,13 @@ const ButtonDesign = ({
       setDivIndexValue(0);
       setDirectionValue(1);
     } else {
-      <Navigate to="/home" />;
+      setPreferencesDone(true);
     }
   };
 
   return (
     <>
+      {preferencesDone && <Navigate to="/home" />};
       <div
         style={{
           width: "100%",

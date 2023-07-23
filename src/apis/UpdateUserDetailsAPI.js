@@ -7,11 +7,15 @@ const UpdateUserDetailsAPI = async ({
   password,
   profile,
 }) => {
-  const url = new URL(process.env.REACT_APP_BACKEND_URL + "profile");
+  const accessToken = localStorage.getItem("accessToken");
 
-  const response = await fetch(url, {
+  const url = new URL(process.env.REACT_APP_BACKEND_URL + "profile");
+  const options = {
     method: "put",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
     body: JSON.stringify({
       id: id,
       firstName: firstName,
@@ -21,7 +25,9 @@ const UpdateUserDetailsAPI = async ({
       password: password,
       profile: profile,
     }),
-  });
+  };
+
+  const response = await fetch(url, options);
 
   const message = await response.json();
   const statusCode = await response.status;

@@ -8,6 +8,7 @@ const LogInAPI = async ({ userName, password }) => {
       userName: userName,
       password: password,
     }),
+    credentials: "include",
   });
 
   const result = await response.json();

@@ -1,11 +1,25 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import Treks from "../../../landingPage/components/Treks.json";
 import SearchIcon from "@mui/icons-material/Search";
+import TrekListAPI from "../../../../apis/TrekListAPI";
+import { Navigate } from "react-router-dom";
 
 const SearchBox = () => {
-  const dropOptions = [...new Set(Treks.map((trek) => trek.name))];
+  const [Treks, setTreks] = useState();
+  const [redirect, setRedirect] = useState(false);
+  const [trekValue, setTrekValue] = useState();
+
+  const generateArray = async () => {
+    const response = await TrekListAPI({});
+    setTreks(response);
+  };
+
+  useEffect(() => {
+    generateArray();
+  }, []);
+
+  const dropOptions = [...new Set(Treks?.map((trek) => trek.name))];
   let inputRef = useRef();
 
   const handleOnClick = () => {
@@ -19,6 +33,15 @@ const SearchBox = () => {
 
   return (
     <>
+      {redirect && (
+        <Navigate
+          to={"/trek/" + trekValue}
+          state={{
+            trekArray: Treks.filter((trek) => trek.name === trekValue)[0],
+          }}
+        />
+      )}
+
       <div className="searchHolder">
         <SearchIcon className="searchIcon" onClick={handleOnClick} />
         <Autocomplete
@@ -47,7 +70,8 @@ const SearchBox = () => {
           clearOnEscape
           options={dropOptions}
           onChange={(event, value) => {
-            console.log(value);
+            setTrekValue(value);
+            setRedirect(true);
           }}
           renderInput={(params) => (
             <TextField

@@ -5,8 +5,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import "../css/ProfilePageDesign.css";
-import GetUserDetailsAPI from "../../../../apis/GetUserDetailsAPI";
 import FormValidation from "../../../loginSignupPage/components/js/FormValidation";
+import GetUserDetailsAPI from "../../../../apis/GetUserDetailsAPI";
 import UpdateUserDetailsAPI from "../../../../apis/UpdateUserDetailsAPI";
 
 const ProfilePageDesign = () => {
@@ -30,10 +30,8 @@ const ProfilePageDesign = () => {
     setDisable(false);
   };
 
-  const userName = localStorage.getItem("userName");
-
   const GenerateProfile = async () => {
-    const userProfile = await GetUserDetailsAPI({ userName });
+    const userProfile = await GetUserDetailsAPI();
     setStoreImg(userProfile.profile);
     setUserID(userProfile._id);
     document.querySelectorAll("input")[0].placeholder = userProfile.firstName;
@@ -45,7 +43,6 @@ const ProfilePageDesign = () => {
   GenerateProfile();
 
   const profileUpdateButton = () => {
-    console.log("hey");
     var firstName = document.querySelectorAll("input")[0].value;
     if (firstName) {
       const formValResult = FormValidation({
@@ -131,7 +128,6 @@ const ProfilePageDesign = () => {
       alert("Details Updated Successfully!");
       setDisable(true);
     }
-    console.log(apiResponse);
   };
 
   return (

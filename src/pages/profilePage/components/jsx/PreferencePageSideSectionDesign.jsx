@@ -6,7 +6,6 @@ import GetPreferencesAPI from "../../../../apis/GetPreferencesAPI";
 import UpdatePreferencesAPI from "../../../../apis/UpdatePreferencesAPI";
 
 const PreferencePageSideSectionDesign = () => {
-  const userName = localStorage.getItem("userName");
   const [isdisabled, setIsdisabled] = useState(true);
   const [Treks, setTreks] = useState([]);
   const [state, setState] = useState();
@@ -17,7 +16,7 @@ const PreferencePageSideSectionDesign = () => {
     const apiResponseTrek = await TrekListAPI({});
     setTreks(apiResponseTrek);
 
-    const apiResponsePref = await GetPreferencesAPI({ userName });
+    const apiResponsePref = await GetPreferencesAPI();
     setState(apiResponsePref.state);
     setSeason(apiResponsePref.season);
     setDifficulty(apiResponsePref.difficulty);
@@ -29,7 +28,6 @@ const PreferencePageSideSectionDesign = () => {
 
   const updatePrefButton = async () => {
     const apiResponse = await UpdatePreferencesAPI({
-      userName,
       state: document.querySelectorAll("input")[0].value,
       season: document.querySelectorAll("input")[1].value,
       difficulty: document.querySelectorAll("input")[2].value,
